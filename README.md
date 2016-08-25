@@ -30,6 +30,6 @@
 <p>and take the name with an IP adress (i.e. 192.168.0.101 => wlan0)<p>
 <p></p>
 <p>You can make semi-black window disappear with parameter at line 23 :</p>
-<p>   own_window_transparent yes</p>
+<h6>   own_window_transparent yes</h6>
 <p>You can change the transparency of window with parameter at line 22 :</p>
-<p>   own_window_argb_value 180</p>
+<h6>   own_window_argb_value 180</h6>
