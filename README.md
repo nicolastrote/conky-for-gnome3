@@ -28,3 +28,8 @@
 <h6>          inet addr:192.168.0.101  Bcast:192.168.0.255  Mask:255.255.255.0</h6>
 <p></p>
 <p>and take the name with an IP adress (i.e. 192.168.0.101 => wlan0)<p>
+<p></p>
+<p>You can make semi-black window disappear with parameter at line 23 :</p>
+<p>   own_window_transparent yes</p>
+<p>You can change the transparency of window with parameter at line 22 :</p>
+<p>   own_window_argb_value 180</p>
