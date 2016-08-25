@@ -1,0 +1,143 @@
+# Default Font.
+use_xft yes
+override_utf8_locale yes
+xftfont 123:size=9
+xftalpha 0.95
+uppercase no
+
+# Performance Settings.
+background yes
+update_interval 1
+total_run_times 0
+cpu_avg_samples 2
+net_avg_samples 2
+double_buffer yes
+text_buffer_size 2048
+
+# Windows Configuration.
+own_window yes
+own_window_type normal
+own_window_argb_visual yes
+own_window_argb_value 255
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+# Border.
+draw_borders no
+border_inner_margin 0
+border_outer_margin 20
+
+# Default Color.
+default_color grey74 # 333333
+
+# Draw Framework.
+draw_shades no
+draw_outline no
+draw_graph_borders no
+minimum_size 300
+maximum_width 350 
+
+# Afficher les ombres
+draw_shades no
+draw_graph_borders no
+# afficher des contours
+draw_outline no
+# contours autour des blocs de texte
+draw_borders no
+
+alignment top_left
+gap_x 13
+gap_y 20
+# no_buffers yes
+uppercase no
+cpu_avg_samples 2
+net_avg_samples 1
+override_utf8_locale yes
+text_buffer_size 2058
+
+TEXT
+${font Arial:bold:size=40}${color grey74}$alignc${time %H:%M}
+# SYSTEM
+${font Arial:bold:size=8}${color grey74}SYSTEM ${color grey74}${hr 2}
+${font Arial:bold:size=10}${color white}$sysname $kernel $alignr $machine
+${font Arial:bold:size=10}${color white}${execpi 9999 lsb_release -ds | cut -f 2| tr "[:upper:]" "[:lower:]"}$alignr${execpi 9999 lsb_release -cs | cut -f 2| tr "[:upper:]" "[:lower:]"}
+${font Arial:bold:size=10}${color white}${execi 99999 cat /proc/cpuinfo | grep "model name" -m1 | cut -d":" -f2 | cut -d" " -f2- | sed 's#Processor ##'}
+${font Arial:bold:size=8}${color grey74}Real time CPU clock $alignr${freq_g cpu0}Ghz
+${font Arial:bold:size=8}${color grey74}Uptime $alignr${uptime}
+${font Arial:bold:size=8}${color grey74}File System $alignr${fs_type}
+
+# MOTHER BOARD
+${font Arial:bold:size=8}${color grey74}MOTHER BOARD ${color grey74}${hr 2}
+$font${color white}
+${font}${color white}CPU: ${hwmon 0 temp 1}°C  $alignr CPU   ${cpu cpu0}%   ${cpubar 8,60 cpu0}
+CPU1   ${cpu cpu1}%    ${cpubar 8,60 cpu1}  $alignr CPU2   ${cpu cpu2}%   ${cpubar 8,60 cpu2}
+#CPU3   ${cpu cpu3}%    ${cpubar 8,60 cpu3}  $alignr CPU4   ${cpu cpu4}%   ${cpubar 8,60 cpu4}
+#CPU5   ${cpu cpu5}%    ${cpubar 8,60 cpu5}
+${voffset -12}
+$font${color white}MEM $mem / $memmax $memperc% $membar
+
+# HDD
+${font Arial:bold:size=8}${color grey74}HDD ${color grey74}${hr 2}
+$font${color white}/      ${fs_used /} / ${fs_size /} $alignr  ${fs_free_perc /}% ${fs_bar 6,100 /}
+$font${color white}/HOME  ${fs_used /home} / ${fs_size /home} $alignr  ${fs_free_perc /home}% ${fs_bar 6,100 /home}
+$font${color white}SWAP   ${swap} / ${swapmax} $alignr  ${swapperc}% ${swapbar 6,100 }
+
+# TOP PROCESS
+${font Arial:bold:size=8}${color grey74}TOP PROCESSES ${color grey74}${hr 2}
+${color white}$font${top_mem name 1}${alignr}${top mem 1} %
+${color white}$font${top_mem name 2}${alignr}${top mem 2} %
+${color white}$font${top_mem name 3}${alignr}${top mem 3} %
+${color white}$font${top_mem name 4}${alignr}${top mem 4} %
+${color white}$font${top_mem name 5}${alignr}${top mem 5} %
+${color white}$font${top_mem name 6}${alignr}${top mem 6} %
+
+# NETWORK
+# ${font Arial:bold:size=8}${color grey74}NETWORK ${color grey74}${hr 2}
+# $font${color white}IP on wlan0 $alignr ${addr wlan0}
+# Down $alignr ${downspeed wlan0} kb/s
+# Up $alignr ${upspeed wlan0} kb/s
+# Downloaded: $alignr  ${totaldown wlan0}
+# Uploaded: $alignr  ${totalup wlan0}
+# ${color white}${downspeedgraph wlan0 32,150 ff0000 0000ff} ${color white}${upspeedgraph wlan0 32,150 0000ff ff0000}
+
+${font Arial:bold:size=8}${color grey74}NETWORK wlan0${color grey74}${hr 2}
+$font${color white}IP on wlan0 $alignr ${addr wlan0}
+Down $alignr ${downspeed wlan0} kb/s
+Up $alignr ${upspeed wlan0} kb/s
+Downloaded: $alignr  ${totaldown wlan0}
+Uploaded: $alignr  ${totalup wlan0}
+${color white}${downspeedgraph wlan0 32,150 ff0000 0000ff} ${color white}${upspeedgraph wlan0 32,150 0000ff ff0000}
+
+
+# CONNEXIONS
+${color #0077ff}Port(s)${alignr}#Connections
+$color Inbound: ${tcp_portmon 1 32767 count}  Outbound: ${tcp_portmon 32768 61000 count}${alignr}ALL: ${tcp_portmon 1 65535 count}
+${color #0077ff}Outbound Connection ${alignr} Remote Service/Port$color
+${tcp_portmon 32768 61000 rhost 0} ${alignr} ${tcp_portmon 32768 61000 rservice 0}
+${tcp_portmon 32768 61000 rhost 1} ${alignr} ${tcp_portmon 32768 61000 rservice 1}
+${tcp_portmon 32768 61000 rhost 2} ${alignr} ${tcp_portmon 32768 61000 rservice 2}
+${tcp_portmon 32768 61000 rhost 3} ${alignr} ${tcp_portmon 32768 61000 rservice 3}
+${tcp_portmon 32768 61000 rhost 4} ${alignr} ${tcp_portmon 32768 61000 rservice 4}
+${tcp_portmon 32768 61000 rhost 5} ${alignr} ${tcp_portmon 32768 61000 rservice 5}
+${tcp_portmon 32768 61000 rhost 6} ${alignr} ${tcp_portmon 32768 61000 rservice 6}
+${tcp_portmon 32768 61000 rhost 7} ${alignr} ${tcp_portmon 32768 61000 rservice 7}
+${tcp_portmon 32768 61000 rhost 8} ${alignr} ${tcp_portmon 32768 61000 rservice 8}
+${tcp_portmon 32768 61000 rhost 9} ${alignr} ${tcp_portmon 32768 61000 rservice 9}
+${tcp_portmon 32768 61000 rhost 10} ${alignr} ${tcp_portmon 32768 61000 rservice 10}
+${tcp_portmon 32768 61000 rhost 11} ${alignr} ${tcp_portmon 32768 61000 rservice 11}
+${tcp_portmon 32768 61000 rhost 12} ${alignr} ${tcp_portmon 32768 61000 rservice 12}
+# ${tcp_portmon 32768 61000 rhost 13} ${alignr} ${tcp_portmon 32768 61000 rservice 13}
+# ${ 32768 61000 rhost 14} ${alignr} ${tcp_portmon 32768 61000 rservice 14}
+# ${tcp_portmon 32768 61000 rhost 15} ${alignr} ${tcp_portmon 32768 61000 rservice 15}
+# ${tcp_portmon 32768 61000 rhost 16} ${alignr} ${tcp_portmon 32768 61000 rservice 16}
+# ${tcp_portmon 32768 61000 rhost 17} ${alignr} ${tcp_portmon 32768 61000 rservice 17}
+# ${tcp_portmon 32768 61000 rhost 18} ${alignr} ${tcp_portmon 32768 61000 rservice 18}
+# ${tcp_portmon 32768 61000 rhost 19} ${alignr} ${tcp_portmon 32768 61000 rservice 19}
+# ${tcp_portmon 32768 61000 rhost 20} ${alignr} ${tcp_portmon 32768 61000 rservice 20}
+
+${color #0077ff}Inbound Connection ${alignr} Local Service/Port$color
+${tcp_portmon 1 32767 rhost 0} ${alignr} ${tcp_portmon 1 32767 lservice 0}
+${tcp_portmon 1 32767 rhost 1} ${alignr} ${tcp_portmon 1 32767 lservice 1}
+${tcp_portmon 1 32767 rhost 2} ${alignr} ${tcp_portmon 1 32767 lservice 2}
+${tcp_portmon 1 32767 rhost 3} ${alignr} ${tcp_portmon 1 32767 lservice 3}
+${tcp_portmon 1 32767 rhost 4} ${alignr} ${tcp_portmon 1 32767 lservice 4}
