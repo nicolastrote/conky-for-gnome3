@@ -5,11 +5,11 @@ A conky script for a fast and beauty surpervision on your linux under Gnome 3 de
 ## Installation
 You need to install 3 paquages :
 ```
-$ sudo apt-get install conky-all hddtemp xsensors</h6>
+$ sudo apt-get install conky-all hddtemp xsensors
 $ sudo dpkg-reconfigure hddtemp
 ``` 
  * Say "Yes" for all requests.
- * Download the script and move it under ~/.conkyrc:</p>
+ * Download the script and move it under ~/.conkyrc:
 ```
 $ sudo mv ~/Download/conkyrc.sh  ~/.conkyrc
 ```
